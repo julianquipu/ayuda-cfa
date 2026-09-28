@@ -273,6 +273,17 @@
     if (changed && opts.scroll !== false) window.scrollTo({ top: 0 });
   }
 
+  // Tocar el logo: vuelve al inicio limpio (sin búsqueda ni filtros, arriba del todo).
+  function goHome() {
+    const home = SECCIONES[0].id;
+    const changed = active !== home;
+    active = home; filter = "all";
+    if (query) { query = ""; input.value = ""; clearBtn.classList.remove("on"); }
+    renderAll();
+    history[changed ? "pushState" : "replaceState"](null, "", "#" + home);
+    window.scrollTo({ top: 0, behavior: reduce.matches ? "auto" : "smooth" });
+  }
+
   /* ---------- Filter chips ---------- */
   function renderFilters() {
     const box = $("filters");
@@ -397,6 +408,7 @@
   document.addEventListener("click", (ev) => {
     const el = (sel) => ev.target.closest(sel);
     let x;
+    if ((x = el("[data-home]"))) { ev.preventDefault(); return goHome(); }
     if ((x = el("[data-nav]"))) return go(x.getAttribute("data-nav"));
     if ((x = el("[data-open], [data-goto]"))) return openEntry(x.getAttribute("data-open") || x.getAttribute("data-goto"), true);
     if ((x = el("[data-filter]"))) {
