@@ -53,8 +53,8 @@ const CONFIG = {
 
 /* ---------- 2. INTRO (portada) ---------- */
 const INTRO = {
-  titulo: "Hola, ¿en qué te ayudamos?",
-  subtitulo: "Cuéntanos qué pasó en una o dos palabras."
+  titulo: "Hola, bienvenido al centro de ayuda",
+  subtitulo: "Resuelve en minutos lo que se te presente en campo, aprende sobre Quipu Score y repasa el paso a paso de la originación con data alternativa."
 };
 
 /* ---------- 3. CATEGORÍAS (la etiqueta de color de cada pregunta) ----------

@@ -48,7 +48,9 @@
 
   // Normaliza para buscar: minúsculas y sin tildes (verificación → verificacion).
   const norm = (s) => String(s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "");
-  const STOP = new Set("a al con de del el en es la las lo los me mi mis para por que se sus su un una y o le les como no ya".split(" "));
+  // Palabras que no ayudan a buscar (también las conversacionales: "tengo problemas con…").
+  const STOP = new Set(("a al con de del el en es la las lo los me mi mis para por que se sus su un una y o le les como no ya " +
+    "tengo tiene tienen tenemos hay problema problemas ayuda necesito pasa esta este esto eso cuando porque muy").split(" "));
   function tokens(q) {
     return norm(q).split(/[^a-z0-9]+/).filter((t) => t && !STOP.has(t))
       // plural simple: fotos → foto, videos → video
@@ -311,6 +313,7 @@
     if (location.search && !query) history.replaceState(null, "", location.pathname + location.hash);
     // El buscador solo vive en el home (Soluciones); las demás secciones se leen como contenido.
     $("sbar").hidden = section().tipo !== "faq" && !query;
+    $("q-help").hidden = $("sbar").hidden;
     renderNav(); renderHead(); renderQuick(); renderFilters(); render(openId);
   }
 

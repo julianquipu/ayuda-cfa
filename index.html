@@ -173,6 +173,7 @@ h1,h2,h3,h4{font-weight:400;letter-spacing:-.01em;line-height:1.2}
 .filters{display:flex;flex-wrap:wrap;gap:var(--sp-2);padding:var(--sp-4) var(--sp-4) 0}
 .filters::-webkit-scrollbar{display:none}
 .searching .filters{display:none}
+.helper{margin:0;padding:0 var(--sp-4) 0 calc(var(--sp-4) + 4px);font-size:13px;line-height:1.4;color:var(--text-3)}
 .fchip{flex:none;position:relative;height:44px;margin:0;padding:0 14px;border-radius:var(--shape-s);border:1px solid var(--outline-v);
   background:var(--md-surface);color:var(--text-2);font:500 14px/1 var(--sans);cursor:pointer;display:inline-flex;align-items:center;gap:6px;
   transition:background .15s var(--ease),border-color .15s var(--ease),padding .15s var(--ease)}
@@ -450,10 +451,12 @@ dialog::backdrop{background:rgba(6,20,19,.45)}
       <span class="lead" aria-hidden="true"><svg viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M378-329q-108.16 0-183.08-75Q120-479 120-585t75-181q75-75 181.5-75t181 75Q632-691 632-584.85 632-542 618-502q-14 40-42 75l242 240q9 8.56 9 21.78T818-143q-9 9-22.22 9-13.22 0-21.78-9L533-384q-30 26-69.96 40.5Q423.08-329 378-329Zm-1-60q81.25 0 138.13-57.5Q572-504 572-585t-56.87-138.5Q458.25-781 377-781q-82.08 0-139.54 57.5Q180-666 180-585t57.46 138.5Q294.92-389 377-389Z"/></svg></span>
       <label for="q" class="vh">Buscar en la ayuda</label>
       <input id="q" type="search" inputmode="search" enterkeyhint="search" autocomplete="off" autocorrect="off" spellcheck="false"
-             placeholder="Ej: foto, KYC, conexión…" aria-describedby="status">
+             placeholder="Escribe una palabra clave" aria-describedby="q-help status">
       <button type="button" class="icon-btn sl" id="clear" aria-label="Borrar búsqueda"><svg viewBox="0 -960 960 960" fill="currentColor" aria-hidden="true"><path d="M480-438 270-228q-9 9-21 9t-21-9q-9-9-9-21t9-21l210-210-210-210q-9-9-9-21t9-21q9-9 21-9t21 9l210 210 210-210q9-9 21-9t21 9q9 9 9 21t-9 21L522-480l210 210q9 9 9 21t-9 21q-9 9-21 9t-21-9L480-438Z"/></svg></button>
     </form>
   </div>
+
+  <p class="helper" id="q-help">Por ejemplo: KYC, foto, Instagram, conexión.</p>
 
   <section class="quick" id="quick" aria-labelledby="quick-t">
     <h2 class="sec-t" id="quick-t">Lo más frecuente</h2>
