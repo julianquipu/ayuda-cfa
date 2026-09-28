@@ -82,6 +82,7 @@ No requiere backend. El equipo dev de la PWA solo necesita la URL.
 - Los textos se piden a la red primero para estar al día; si no hay señal o tarda más de 3 segundos, se usa la copia guardada.
 - Imágenes e íconos se sirven desde la copia guardada (abren al instante).
 - Si reemplazas una imagen conservando el nombre, sube `VERSION` en `sw.js`, o mejor usa un nombre nuevo.
+- Si cambias `app.js` o `index.html`, sube el `?v=` de las dos etiquetas `<script>` al final de `index.html` (y `VERSION` en `sw.js`). Así ningún celular mezcla una página nueva con código viejo. Editar solo `data.js` no lo requiere.
 
 ## Diseño
 

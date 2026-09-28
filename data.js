@@ -48,7 +48,7 @@ const CONFIG = {
   // Búsquedas que se sugieren cuando una búsqueda no encuentra nada.
   sugerencias: ["foto no carga", "kyc", "quipu score", "dns"],
 
-  version: "v0.4 · piloto"
+  version: "v0.4.2 · piloto"
 };
 
 /* ---------- 2. INTRO (portada) ---------- */
