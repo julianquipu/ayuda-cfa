@@ -68,7 +68,7 @@ El acceso es un botón **"Ayuda"** en la PWA de originación que abre este centr
 |---|---|
 | `…/` | Portada (Soluciones + Lo más frecuente) |
 | `…/#quipu-score` · `#paso-a-paso` | Esa sección (`#flujo` también abre Paso a paso) |
-| `…/#kyc` · `#qs` · `#media` · `#conexion` | Soluciones filtradas por esa categoría |
+| `…/#kyc` · `#qs` · `#ig` · `#media` | Soluciones filtradas por esa categoría (`#conexion` abre Quipu Score) |
 | `…/#kyc-enlace-invalido` · `#dns-samsung` · `#paso-3-kyc` … | Esa respuesta o tema, abierto (el `id` está en `data.js`) |
 | `…/?q=foto` | La ayuda con esa búsqueda ya hecha |
 
@@ -101,6 +101,5 @@ Variante **Quipu 2031 × Material 3**:
 
 ## Pendientes
 
-- Peso máximo oficial de foto/video (`CONFIG.pesoMaximo`, lo confirma dev).
 - Captura `IMG-01`: ajustes de cámara del Moto G (ver `IMAGENES_pendientes.md` en la carpeta de trabajo).
 - Variante de la guía de DNS para otros Android / iPhone.

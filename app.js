@@ -178,9 +178,17 @@
         (p.titulo ? '<span class="st">' + fmt(p.titulo) + "</span>" : "") +
         (p.texto ? "<div>" + fmt(p.texto) + "</div>" : "") +
         (p.subpasos ? '<ol class="sub">' + p.subpasos.map((s) => "<li>" + fmt(s) + "</li>").join("") + "</ol>" : "") +
-        renderImgs(p.img) + "</li>";
+        renderImgs(p.img) + (p.ver ? '<div class="ver-in">' + verList(p.ver) + "</div>" : "") + "</li>";
     }).join("") + "</ol>";
   }
+
+  // Enlace a otra respuesta: { id, texto }
+  function verBtn(v) {
+    const e = v && entry(v.id);
+    if (!e) return "";
+    return '<button type="button" class="ver sl" data-goto="' + esc(v.id) + '">' + ICON.help + '<span><span class="k">Si algo falla</span>' + esc(v.texto || e.title) + "</span>" + ICON.next + "</button>";
+  }
+  const verList = (v) => [].concat(v || []).map(verBtn).join("");
 
   const nota = (titulo, texto) => '<div class="nota"><span class="eyebrow">' + esc(titulo || "Importante") + "</span>" + fmt(texto) + "</div>";
 
@@ -211,10 +219,7 @@
       }
       else if (b.tipo === "titulo") html += '<h4 class="sub-t">' + fmt(b.texto) + "</h4>";
       else if (b.tipo === "img") html += renderImgs(b.img);
-      else if (b.tipo === "ver") {
-        const e = entry(b.id);
-        if (e) html += '<button type="button" class="ver sl" data-goto="' + esc(b.id) + '">' + ICON.help + '<span><span class="k">Si algo falla</span>' + esc(b.texto || e.title) + "</span>" + ICON.next + "</button>";
-      }
+      else if (b.tipo === "ver") html += verBtn(b);
     });
     flush();
     return html;
@@ -224,6 +229,7 @@
     return (it.aplica ? '<span class="aplica">' + ICON.phone + "Aplica a: " + esc(it.aplica) + "</span>" : "") +
       (it.respuesta ? "<p>" + fmt(it.respuesta) + "</p>" : "") +
       (it.nota ? nota("Importante", it.nota) : "") +
+      verList(it.ver) +
       renderPasos(it.pasos) + renderImgs(it.img) +
       (it.cierre ? "<p>" + fmt(it.cierre) + "</p>" : "");
   }
@@ -576,7 +582,7 @@
 
   /* ---------- Enlaces directos ----------
      #errores, #quipu-score, #paso-a-paso → abre esa sección (#flujo → Paso a paso)
-     #kyc, #conx (o #conexion) → Soluciones con ese filtro
+     #kyc, #qs, #ig, #media   → Soluciones con ese filtro (#conexion → Quipu Score)
      #dns-samsung, #paso-3-kyc → abre esa respuesta o tema
      ?q=foto                   → llega con la búsqueda hecha (útil desde la PWA de originación) */
   function route(fromHistory) {
@@ -585,7 +591,7 @@
     const q = new URLSearchParams(location.search).get("q");
     if (q) { input.value = q; query = q; clearBtn.classList.add("on"); return renderAll(); }
     if (SECCIONES.some((s) => s.id === hash)) return go(hash, { push: false, scroll: !!fromHistory });
-    const cat = hash === "conexion" ? "conx" : hash;
+    const cat = (hash === "conexion" || hash === "conx") ? "qs" : hash; // Conexión se integró en Quipu Score
     if (CATEGORIAS[cat]) {
       const faqSec = SECCIONES.find((s) => s.tipo === "faq");
       active = faqSec.id; filter = cat; return renderAll();

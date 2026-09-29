@@ -32,7 +32,7 @@ En `data.js`, busca `const FAQ = [` y pega esto **dentro de los corchetes**, des
 | Campo | Qué es |
 |---|---|
 | `id` | Nombre único, sin espacios ni tildes. Sirve para el enlace directo (`…/#nombre-corto`). |
-| `cat` | Categoría: `kyc` · `qs` (Quipu Score) · `ig` (Instagram) · `media` (foto y video) · `conx` (conexión) · `gen` (general). |
+| `cat` | Categoría: `kyc` · `qs` (Quipu Score) · `ig` (Instagram) · `media` (foto y video) · `gen` (general). |
 | `pregunta` | El título, como lo buscaría el asesor. |
 | `palabras` | Palabras que activan el resultado al buscar. **Entre más, mejor.** Sin tildes. |
 | `respuesta` | El texto principal de la solución. |
@@ -46,6 +46,7 @@ En `data.js`, busca `const FAQ = [` y pega esto **dentro de los corchetes**, des
 | `nota` | Recuadro dorado de "Importante". | `nota: "Las pantallas son ilustrativas…",` |
 | `aplica` | A qué celulares aplica. | `aplica: "Samsung Galaxy · One UI",` |
 | `cierre` | Texto final, después de los pasos. | `cierre: "¿Sigue sin funcionar? …",` |
+| `ver` | Enlaces "Si algo falla" a otras respuestas (van después de la nota; también dentro de un paso). | `ver: [{ id: "dns-samsung", texto: "…" }],` |
 | `img` | Imágenes (ver punto 3). | |
 
 Un paso puede ser un texto simple o un bloque con título, subpasos e imagen:
@@ -130,7 +131,7 @@ Para **ocultar todos los recuadros pendientes** al publicar: `mostrarImagenesPen
 | **Grupo de soporte en WhatsApp** | `grupoWhatsApp: "https://chat.whatsapp.com/…"`. El botón copia el mensaje armado y abre el grupo; el asesor lo pega. |
 | **Número de WhatsApp** (alternativa) | `whatsapp: "573001234567"`: solo se usa si `grupoWhatsApp` está vacío. Con número, el mensaje llega ya escrito. |
 | **Mensaje prellenado del reporte** | `mensajeWhatsApp: [ … ]` (una línea por elemento). |
-| **Peso máximo de foto/video** | `pesoMaximo: "…"` (aparece donde el texto dice `{PESO}`). |
+| **Peso máximo de foto/video** | Confirmado en el manual v1.0: foto hasta 30 MB, video hasta 60 s en MP4. |
 | **Búsquedas sugeridas** | `sugerencias: [ … ]` (aparecen cuando una búsqueda no encuentra nada). |
 | **Título y subtítulo de la portada** | `INTRO` (debajo de `CONFIG`). |
 | **Versión que se ve en el pie** | `version: "v0.3 · piloto"` |
