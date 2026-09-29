@@ -48,7 +48,7 @@ const CONFIG = {
   // Búsquedas que se sugieren cuando una búsqueda no encuentra nada.
   sugerencias: ["foto no carga", "kyc", "quipu score", "dns"],
 
-  version: "v0.6 · piloto"
+  version: "v0.6.1 · piloto"
 };
 
 /* ---------- 2. INTRO (portada) ---------- */
@@ -112,9 +112,9 @@ const FAQ = [
   {
     id: "cliente-iphone",
     cat: "qs",
-    pregunta: "El cliente tiene iPhone o Huawei",
-    palabras: "iphone apple ios huawei celular cliente android quipu score no se puede completar descargar app compatible",
-    respuesta: "La app Quipu Score es **obligatoria** y hoy **solo existe para Android** (desde la versión 6.0). Tampoco funciona en **Huawei**. En esos casos, la solicitud **no se puede completar**.",
+    pregunta: "El cliente tiene iPhone",
+    palabras: "iphone apple ios celular cliente android quipu score no se puede completar descargar app compatible",
+    respuesta: "La app Quipu Score es **obligatoria** y, por el momento, **solo está disponible para celulares Android** (no está disponible para iPhone). Si el cliente tiene iPhone, la solicitud **no se puede completar**.",
     nota: "Confírmalo **antes de empezar** la visita: pregúntale al cliente qué celular tiene. Debe ser **su** celular, no el de un familiar.",
     ver: [ { id: "qs-celular-titular", texto: "¿En qué celular se instala?" } ]
   },
@@ -326,10 +326,10 @@ const SECCIONES = [
           ] }
         ] },
       { id: "qs-celulares", titulo: "¿Qué celulares funcionan?",
-        palabras: "celulares compatibles android version 6 redmi xiaomi samsung oppo motorola iphone huawei gama internet",
+        palabras: "celulares compatibles android version 6 redmi xiaomi samsung oppo motorola iphone gama internet",
         bloques: [
           { tipo: "texto", texto: "Android desde la versión **6.0**; no tiene que ser de gama alta. Funcionan **Redmi** (el más usado del segmento), **Samsung**, **Oppo** y **Motorola**." },
-          { tipo: "nota", titulo: "No funciona", texto: "En **iPhone** ni en **Huawei**. Además, el cliente necesita **conexión a internet** para descargar la app." }
+          { tipo: "nota", titulo: "Solo Android", texto: "Por el momento, la app **solo está disponible para celulares Android** (no está disponible para iPhone). Además, el cliente necesita **conexión a internet** para descargarla." }
         ] },
       { id: "qs-foto-video", titulo: "¿Por qué importan tanto la foto y el video?",
         palabras: "foto video negocio inteligencia artificial buenos pagadores evidencia camara grabar consejos",
