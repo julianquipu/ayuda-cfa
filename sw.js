@@ -6,7 +6,7 @@
    Solo si REEMPLAZAS una imagen conservando el mismo nombre de archivo,
    sube el número de VERSION (ej. v1 → v2) para que los celulares la renueven.
    ===================================================================== */
-const VERSION = "ayuda-cfa-v4";
+const VERSION = "ayuda-cfa-v5";
 const FONTS = "ayuda-cfa-fuentes";
 const ESPERA_RED = 3000; // ms: con señal débil, pasado este tiempo se usa la copia guardada
 

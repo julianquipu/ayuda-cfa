@@ -48,7 +48,7 @@ const CONFIG = {
   // Búsquedas que se sugieren cuando una búsqueda no encuentra nada.
   sugerencias: ["foto no carga", "kyc", "quipu score", "dns"],
 
-  version: "v0.5 · piloto"
+  version: "v0.6 · piloto"
 };
 
 /* ---------- 2. INTRO (portada) ---------- */
@@ -112,10 +112,11 @@ const FAQ = [
   {
     id: "cliente-iphone",
     cat: "qs",
-    pregunta: "El cliente tiene iPhone",
-    palabras: "iphone apple ios celular cliente android quipu score no se puede completar descargar app",
-    respuesta: "La app Quipu Score es **obligatoria** y hoy **solo existe para Android**. Si el cliente tiene iPhone, la solicitud **no se puede completar**.",
-    nota: "Confírmalo **antes de empezar** la visita: pregúntale al cliente qué celular tiene."
+    pregunta: "El cliente tiene iPhone o Huawei",
+    palabras: "iphone apple ios huawei celular cliente android quipu score no se puede completar descargar app compatible",
+    respuesta: "La app Quipu Score es **obligatoria** y hoy **solo existe para Android** (desde la versión 6.0). Tampoco funciona en **Huawei**. En esos casos, la solicitud **no se puede completar**.",
+    nota: "Confírmalo **antes de empezar** la visita: pregúntale al cliente qué celular tiene. Debe ser **su** celular, no el de un familiar.",
+    ver: [ { id: "qs-celular-titular", texto: "¿En qué celular se instala?" } ]
   },
   {
     id: "quipu-score-version-cfa",
@@ -289,21 +290,72 @@ const SECCIONES = [
     subtitulo: "Argumentos claros para que entiendas el porqué y se lo puedas explicar al cliente con confianza.",
     temas: [
       { id: "qs-que-es", titulo: "¿Qué es el Quipu Score?",
-        palabras: "puntaje credito score obligatorio perfil habitos financieros centrales riesgo",
+        palabras: "puntaje credito score obligatorio perfil habitos financieros inteligencia artificial datos alternativos",
         bloques: [
-          { tipo: "texto", texto: "Es el **puntaje de crédito de Quipu**. En lugar de mirar solo el historial en centrales de riesgo, **entiende el perfil financiero y los hábitos financieros del cliente** para calcular el monto, el plazo, la cuota y las condiciones del crédito. Por eso es un paso **obligatorio**: sin él, la solicitud no puede evaluarse." }
+          { tipo: "texto", texto: "Es el **puntaje de crédito de Quipu**. Con **inteligencia artificial**, analiza **datos alternativos** del cliente para entender su perfil financiero y sus hábitos, y así calcular las condiciones del crédito." },
+          { tipo: "texto", texto: "Es un paso **obligatorio**: si el cliente no descarga la app, no hay forma de analizarlo y la solicitud no puede evaluarse." }
         ] },
-      { id: "qs-que-mira", titulo: "¿Qué mira el Quipu Score?",
-        palabras: "capacidad pago endeudamiento antiguedad negocio instagram preaprobado resultado puntaje",
+      { id: "qs-fuentes", titulo: "¿De dónde saca la información?",
+        palabras: "fuentes informacion analiza mensajes texto sms transaccionales foto video formulario ingresos recurrentes mora fraude capacidad pago",
         bloques: [
-          { tipo: "texto", texto: "Evalúa, en conjunto, señales del negocio y del cliente como:" },
+          { tipo: "texto", texto: "Cruza tres fuentes:" },
           { tipo: "lista", items: [
-            "Su **capacidad de pago** (cuánto le queda después de sus gastos).",
-            "Su **nivel de endeudamiento**.",
-            "La **antigüedad y el comportamiento** del negocio.",
-            "Su actividad y hábitos, incluida —si el cliente quiere— la actividad de su **Instagram del negocio**."
+            "Los **datos del formulario** que registras en la visita.",
+            "La **foto y el video del negocio**, analizados con inteligencia artificial.",
+            "Los **mensajes de texto transaccionales** del celular del cliente: notificaciones del banco, pagos recibidos, recordatorios de pago."
           ] },
-          { tipo: "texto", texto: "Con esas señales, el modelo decide si el crédito queda **pre-aprobado** y en qué condiciones. Al cliente **no se le muestra el puntaje desagregado**: ve un **resultado general** (pre-aprobado o no)." }
+          { tipo: "texto", texto: "Con eso identifica si la persona tiene **ingresos recurrentes**, si está **en mora** y si hay **señales de fraude**. Al cliente **no se le muestra el puntaje**: ve un resultado general (pre-aprobado o no)." }
+        ] },
+      { id: "qs-por-que-app", titulo: "¿Por qué el cliente tiene que descargar una app?",
+        palabras: "por que descargar app aplicacion mensajes texto sms permiso seguro obligatorio documentos facturas segundos",
+        bloques: [
+          { tipo: "texto", texto: "Antes el cliente tenía que demostrar su negocio con facturas, órdenes de compra y documentos. Con la app, Quipu lee **solo los mensajes de código corto** (del banco, de pagos y promocionales) y los analiza **en segundos**." },
+          { tipo: "texto", texto: "El permiso que pide la app es **seguro**, pero **obligatorio** para calcular el puntaje." },
+          { tipo: "decir", texto: "Esta app revisa solo los mensajes de tu banco y de tus pagos, no tus conversaciones. Así no tienes que mostrarme facturas ni documentos." }
+        ] },
+      { id: "qs-celular-titular", titulo: "¿En qué celular se instala?",
+        palabras: "celular titular familiar hijo papa vecino dos celulares doble sim linea nueva numero nuevo celular nuevo estrenando equipo",
+        bloques: [
+          { tipo: "lista", items: [
+            "**Siempre en el celular del titular**, el que más usa para su negocio: los mensajes reflejan sus propias transacciones.",
+            "**Nunca en el de un familiar** (hijo, papá, vecino): ese celular no tiene su información.",
+            "**Si tiene dos celulares:** el que más use para el negocio.",
+            "**Doble SIM:** no importa; Quipu lee el celular, no la línea.",
+            "**Si cambió de número hace poco:** no hay problema.",
+            "**Si estrena celular ese día:** casi seguro sale rechazado, porque no hay mensajes para analizar. Conviene volver cuando tenga más uso."
+          ] }
+        ] },
+      { id: "qs-celulares", titulo: "¿Qué celulares funcionan?",
+        palabras: "celulares compatibles android version 6 redmi xiaomi samsung oppo motorola iphone huawei gama internet",
+        bloques: [
+          { tipo: "texto", texto: "Android desde la versión **6.0**; no tiene que ser de gama alta. Funcionan **Redmi** (el más usado del segmento), **Samsung**, **Oppo** y **Motorola**." },
+          { tipo: "nota", titulo: "No funciona", texto: "En **iPhone** ni en **Huawei**. Además, el cliente necesita **conexión a internet** para descargar la app." }
+        ] },
+      { id: "qs-foto-video", titulo: "¿Por qué importan tanto la foto y el video?",
+        palabras: "foto video negocio inteligencia artificial buenos pagadores evidencia camara grabar consejos",
+        bloques: [
+          { tipo: "texto", texto: "Quipu los analiza con inteligencia artificial y los compara con más de **500.000 fotos y videos** de clientes que pagaron bien. Tu papel es clave:" },
+          { tipo: "lista", items: [
+            "Que el cliente **salga en cámara** contando **qué vende y cómo trabaja**.",
+            "Buena luz y sin movimientos bruscos.",
+            "Grábalo **desde la PWA**, no desde la galería."
+          ] }
+        ] },
+      { id: "qs-clientes", titulo: "¿A qué clientes está dirigido?",
+        palabras: "perfil cliente ideal negocio informal punto venta tienda miscelanea salon belleza comidas ambulante servicios antiguedad meses sin historial reporte negativo centrales riesgo mujer",
+        bloques: [
+          { tipo: "lista", items: [
+            "**Personas naturales** con un **negocio informal**, idealmente con **punto de venta**: tiendas, misceláneas, salones de belleza, comidas preparadas, venta al por menor. También venta ambulante, si se puede mostrar el carrito o el puesto.",
+            "Negocios con **al menos 6 meses** funcionando. Los recién abiertos no tienen cómo demostrar su capacidad de pago.",
+            "**Difícil:** negocios solo de servicios, porque no se ven en foto y video.",
+            "**Perfil típico:** una mujer de unos 45 años, con un negocio de más de un año que sostiene a su familia, sin cuentas a nombre del negocio."
+          ] },
+          { tipo: "nota", titulo: "La oportunidad", texto: "Personas **sin historial crediticio** o con un **reporte negativo** (sobre todo de crédito de consumo). **El pre-aprobado no se decide con las centrales de riesgo.**" }
+        ] },
+      { id: "qs-tiempo", titulo: "¿Cuánto tarda el resultado?",
+        palabras: "cuanto tarda tiempo demora resultado preaprobado minutos visita duracion",
+        bloques: [
+          { tipo: "texto", texto: "Una vez completa la información, el pre-aprobado debe salir en **menos de 5 minutos**. La visita completa dura entre **45 y 90 minutos**, y se acorta a medida que dominas la herramienta." }
         ] },
       { id: "qs-data-alternativa", titulo: "¿Qué es la “data alternativa”?",
         palabras: "data alternativa informacion negocio sin historial banco tradicional evaluacion justa",
