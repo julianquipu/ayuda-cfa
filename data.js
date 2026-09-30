@@ -21,7 +21,7 @@ const CONFIG = {
   // (WhatsApp no permite precargar texto en un grupo, solo en un número.)
   // ⚠️ El sitio es público: pon aquí el enlace SOLO si el grupo tiene activo "Aprobar nuevos participantes".
   // Vacío = se abre WhatsApp con el mensaje ya escrito y el asesor elige el grupo de soporte.
-  grupoWhatsApp: "",
+  grupoWhatsApp: "https://chat.whatsapp.com/EulfZfkn8hQ2wL8GCuW1MM",
 
   // O un número directo (se usa solo si grupoWhatsApp está vacío).
   // Número de WhatsApp de soporte: formato internacional, sin "+" ni espacios.
@@ -48,7 +48,7 @@ const CONFIG = {
   // Búsquedas que se sugieren cuando una búsqueda no encuentra nada.
   sugerencias: ["foto no carga", "kyc", "quipu score", "dns"],
 
-  version: "v0.6.1 · piloto"
+  version: "v0.7 · piloto"
 };
 
 /* ---------- 2. INTRO (portada) ---------- */
@@ -112,10 +112,10 @@ const FAQ = [
   {
     id: "cliente-iphone",
     cat: "qs",
-    pregunta: "El cliente tiene iPhone",
-    palabras: "iphone apple ios celular cliente android quipu score no se puede completar descargar app compatible",
-    respuesta: "La app Quipu Score es **obligatoria** y, por el momento, **solo está disponible para celulares Android** (no está disponible para iPhone). Si el cliente tiene iPhone, la solicitud **no se puede completar**.",
-    nota: "Confírmalo **antes de empezar** la visita: pregúntale al cliente qué celular tiene. Debe ser **su** celular, no el de un familiar.",
+    pregunta: "El celular del cliente no tiene Play Store",
+    palabras: "iphone apple ios celular cliente android play store google play tienda chino sin play store quipu score no se puede completar descargar instalar app compatible",
+    respuesta: "La app Quipu Score es **obligatoria** y, para instalarla, el celular necesita tener **Play Store (Google Play)**. Eso deja por fuera los **iPhone** y algunos **Android sin Play Store**, como ciertos celulares chinos. En esos casos, la solicitud **no se puede completar**.",
+    nota: "Confírmalo **antes de empezar** la visita: pídele al cliente que te muestre que tiene **Play Store** en su celular. Debe ser **su** celular, no el de un familiar.",
     ver: [ { id: "qs-celular-titular", texto: "¿En qué celular se instala?" } ]
   },
   {
@@ -326,10 +326,10 @@ const SECCIONES = [
           ] }
         ] },
       { id: "qs-celulares", titulo: "¿Qué celulares funcionan?",
-        palabras: "celulares compatibles android version 6 redmi xiaomi samsung oppo motorola iphone gama internet",
+        palabras: "celulares compatibles android version 6 redmi xiaomi samsung oppo motorola iphone play store google play chino gama internet",
         bloques: [
           { tipo: "texto", texto: "Android desde la versión **6.0**; no tiene que ser de gama alta. Funcionan **Redmi** (el más usado del segmento), **Samsung**, **Oppo** y **Motorola**." },
-          { tipo: "nota", titulo: "Solo Android", texto: "Por el momento, la app **solo está disponible para celulares Android** (no está disponible para iPhone). Además, el cliente necesita **conexión a internet** para descargarla." }
+          { tipo: "nota", titulo: "Necesita Play Store", texto: "Para instalar Quipu Score, el celular debe tener **Play Store (Google Play)**. No funciona en **iPhone** ni en Android **sin Play Store**, como algunos celulares chinos. Además, el cliente necesita **conexión a internet** para descargarla." }
         ] },
       { id: "qs-foto-video", titulo: "¿Por qué importan tanto la foto y el video?",
         palabras: "foto video negocio inteligencia artificial buenos pagadores evidencia camara grabar consejos",
@@ -426,7 +426,7 @@ const SECCIONES = [
             "**Carga el celular**: una visita puede durar entre **45 y 90 minutos**.",
             "Avísale al cliente que usará **su propio celular en tres momentos**."
           ] },
-          { tipo: "nota", titulo: "Solo clientes Android", texto: "Confirma antes de empezar que el cliente tiene un celular **Android**. La app Quipu Score es obligatoria y hoy solo existe para Android: si el cliente tiene **iPhone**, la solicitud **no se puede completar**." },
+          { tipo: "nota", titulo: "El celular debe tener Play Store", texto: "Confirma antes de empezar que el celular del cliente tiene **Play Store (Google Play)**. La app Quipu Score es obligatoria y solo se instala así: en un **iPhone** o en un Android **sin Play Store**, la solicitud **no se puede completar**." },
           { tipo: "decir", texto: "Durante la visita voy a necesitar que tengas tu documento de identidad original en físico a la mano y que uses tu celular en tres momentos: para validar tu identidad, opcionalmente para conectar tu Instagram, y al final para completar un puntaje alternativo que te permitirá acceder a la mejor oferta." }
         ] },
       { id: "paso-1-sesion", meta: "Paso 1", titulo: "Iniciar sesión",
